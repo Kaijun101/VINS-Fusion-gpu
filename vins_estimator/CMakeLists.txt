@@ -16,9 +16,9 @@ find_package(catkin REQUIRED COMPONENTS
     camera_models
     image_transport)
 
+##For vins_estimator : line 20
 #find_package(OpenCV REQUIRED)
-include(/home/dji/opencv/build/OpenCVConfig.cmake)
-#message(WARNING "OpenCV_VERSION: ${OpenCV_VERSION}")
+include(/usr/local/share/OpenCV/OpenCVConfig.cmake)
 
 find_package(Ceres REQUIRED)
 
