@@ -10,8 +10,8 @@ image0_topic: "/camera/infra1/image_rect_raw"
 image1_topic: "/camera/infra2/image_rect_raw"
 output_path: "/home/dji/output/"
 
-cam0_calib: "left (realsense).yaml"
-cam1_calib: "right (realsense).yaml"
+cam0_calib: "left.yaml"
+cam1_calib: "right.yaml"
 image_width: 640
 image_height: 480
    
@@ -24,44 +24,46 @@ body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [ 0.99992809,  0.00909907, -0.00781125, -0.00085395,
-         -0.0090519,   0.99994071,  0.00605225,  0.00967433,
-         0.00786586, -0.0059811,   0.99995118,  0.00178673,
-         0.,          0.,          0.,          1.        ]
-
+   data: [ -5.7586305857286746e-03, -4.0463318787729019e-03,
+       9.9997523237933461e-01, 2.0329267950355900e-02,
+       -9.9998287214160420e-01, -1.0224590553211677e-03,
+       -5.7628118925283633e-03, 7.9325209639615653e-03,
+       1.0457519809151661e-03, -9.9999129084997906e-01,
+       -4.0403746097850135e-03, 2.8559824645148020e-03, 0., 0., 0., 1. ]
 
 body_T_cam1: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [ 0.99979873,  0.00954533, -0.01764595,  0.04932231,
-         -0.00944246,  0.99993799,  0.0059038,   0.00924272,
-         0.01770121, -0.005736,    0.99982687,  0.0019443, 
-         0.,          0.,          0.,          1.        ]
+   data: [ -1.0021770212322867e-03, 3.6313480322730518e-04,
+       9.9999943188700535e-01, 1.5285779565991807e-02,
+       -9.9999216342926500e-01, -3.8303422615924010e-03,
+       -1.0007788055728661e-03, -5.2435791444330505e-02,
+       3.8299766679101843e-03, -9.9999259827824449e-01,
+       3.6697063849344680e-04, 8.6931302450199057e-03, 0., 0., 0., 1. ]
+
 #Multiple thread support
-multiple_thread: 2
-use_gpu: 1
-use_gpu_acc_flow: 1
+multiple_thread: 1
 
 #feature traker paprameters
-max_cnt: 50            # max feature number in feature tracking
-min_dist: 12            # min distance between two features 
-freq: 30                # frequence (Hz) of publish tracking result. At least 10Hz for good estimation. If set 0, the frequence will be same as raw image 
+max_cnt: 150            # max feature number in feature tracking
+min_dist: 30            # min distance between two features 
+freq: 10                # frequence (Hz) of publish tracking result. At least 10Hz for good estimation. If set 0, the frequence will be same as raw image 
 F_threshold: 1.0        # ransac threshold (pixel)
 show_track: 0           # publish tracking image as topic
 flow_back: 1            # perform forward and backward optical flow to improve feature tracking accuracy
 
 #optimization parameters
-max_solver_time: 0.03  # max solver itration time (ms), to guarantee real time
-max_num_iterations: 6   # max solver itrations, to guarantee real time
+max_solver_time: 0.04  # max solver itration time (ms), to guarantee real time
+max_num_iterations: 8   # max solver itrations, to guarantee real time
 keyframe_parallax: 10.0 # keyframe selection threshold (pixel)
 
 #imu parameters       The more accurate parameters you provide, the better performance
-acc_n: 0.001465            # accelerometer measurement noise standard deviation. #0.001865  "0.00147"
-gyr_n: 0.0002443461       # gyroscope measurement noise standard deviation. #0.0018685    "0.0002443461"
-acc_w: 0.00098     # accelerometer bias random work noise standard deviation.  #0.0002   "0.00098"
-gyr_w: 0.01466077       # gyroscope bias random work noise standard deviation.  #0.000004    "0.01466077"
-g_norm: 9.805         # gravity magnitude 9.805
+acc_n: 0.001865          # accelerometer measurement noise standard deviation. #0.2   0.04 0.1
+gyr_n: 0.0018685         # gyroscope measurement noise standard deviation.     #0.05  0.004 0.01
+acc_w: 0.0002         # accelerometer bias random work noise standard deviation.  #0.002 0.001
+gyr_w: 0.000004       # gyroscope bias random work noise standard deviation.     #4.0e-5 0.0001
+g_norm: 9.805         # gravity magnitude
 
 #unsynchronization parameters
 estimate_td: 1                      # online estimate time offset between camera and imu
