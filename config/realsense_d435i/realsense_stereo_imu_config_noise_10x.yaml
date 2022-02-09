@@ -5,7 +5,7 @@
 imu: 1         
 num_of_cam: 2  
 
-imu_topic: "/camera/imu"
+imu_topic: "/imu/data"
 image0_topic: "/camera/infra1/image_rect_raw"
 image1_topic: "/camera/infra2/image_rect_raw"
 output_path: "/home/dji/output/"
@@ -24,20 +24,20 @@ body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [ 0.99992809,  0.00909907, -0.00781125, -0.00085395,
-         -0.0090519,   0.99994071,  0.00605225,  0.00967433,
-         0.00786586, -0.0059811,   0.99995118,  0.00178673,
-         0.,          0.,          0.,          1.        ]
+   data: [ 0.99992636,  0.00570922, -0.0107093,   0.00511273,
+          -0.00578268,  0.99995988, -0.00684116,  0.00329164,
+          0.01066982,  0.00690259,  0.99991925,  0.00424374,
+          0.,          0.,          0.,          1.        ]
 
 
 body_T_cam1: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [ 0.99979873,  0.00954533, -0.01764595,  0.04932231,
-         -0.00944246,  0.99993799,  0.0059038,   0.00924272,
-         0.01770121, -0.005736,    0.99982687,  0.0019443, 
-         0.,          0.,          0.,          1.        ]
+   data: [ 0.99969968,  0.00601838, -0.0237554,   0.05872747,
+          -0.0061933,   0.9999542,  -0.00729656,  0.00295727,
+          0.0237104,   0.00744149,  0.99969117,  0.00475325,
+          0.,          0.,          0.,          1.        ]
 #Multiple thread support
 multiple_thread: 2
 use_gpu: 1
@@ -57,10 +57,10 @@ max_num_iterations: 6   # max solver itrations, to guarantee real time
 keyframe_parallax: 10.0 # keyframe selection threshold (pixel)
 
 #imu parameters       The more accurate parameters you provide, the better performance
-acc_n: 0.001465            # accelerometer measurement noise standard deviation. #0.001865  "0.00147"
-gyr_n: 0.0002443461       # gyroscope measurement noise standard deviation. #0.0018685    "0.0002443461"
-acc_w: 0.00098     # accelerometer bias random work noise standard deviation.  #0.0002   "0.00098"
-gyr_w: 0.01466077       # gyroscope bias random work noise standard deviation.  #0.000004    "0.01466077"
+acc_n: 0.0108306596           # accelerometer measurement noise standard deviation. #0.001865  "0.00147"
+gyr_n: 0.001903801       # gyroscope measurement noise standard deviation. #0.0018685    "0.0002443461"
+acc_w: 5.573159e-05     # accelerometer bias random work noise standard deviation.  #0.0002   "0.00098"
+gyr_w: 8.17677e-06       # gyroscope bias random work noise standard deviation.  #0.000004    "0.01466077"
 g_norm: 9.805         # gravity magnitude 9.805
 
 #unsynchronization parameters
