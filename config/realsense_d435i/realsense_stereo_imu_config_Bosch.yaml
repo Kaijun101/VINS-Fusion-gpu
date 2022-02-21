@@ -43,7 +43,7 @@ use_gpu: 1
 use_gpu_acc_flow: 1
 
 #feature traker paprameters
-max_cnt: 50            # max feature number in feature tracking
+max_cnt: 100            # max feature number in feature tracking
 min_dist: 12            # min distance between two features 
 freq: 30                # frequence (Hz) of publish tracking result. At least 10Hz for good estimation. If set 0, the frequence will be same as raw image 
 F_threshold: 1.0        # ransac threshold (pixel)
@@ -56,10 +56,10 @@ max_num_iterations: 6   # max solver itrations, to guarantee real time
 keyframe_parallax: 10.0 # keyframe selection threshold (pixel)
 
 #imu parameters       The more accurate parameters you provide, the better performance
-acc_n: 0.00147            # accelerometer measurement noise standard deviation. #0.001865  "0.00147"
-gyr_n: 0.0002443461       # gyroscope measurement noise standard deviation. #0.0018685    "0.0002443461"
-acc_w: 0.00098     # accelerometer bias random work noise standard deviation.  #0.0002   "0.00098"
-gyr_w: 0.01466077       # gyroscope bias random work noise standard deviation.  #0.000004    "0.01466077"
+acc_n: 0.0147            # accelerometer measurement noise standard deviation. #0.001865  "0.00147"
+gyr_n: 0.002443461       # gyroscope measurement noise standard deviation. #0.0018685    "0.0002443461"
+acc_w: 0.0098     # accelerometer bias random work noise standard deviation.  #0.0002   "0.00098"
+gyr_w: 0.1466077       # gyroscope bias random work noise standard deviation.  #0.000004    "0.01466077"
 g_norm: 9.805         # gravity magnitude 9.805
 
 #unsynchronization parameters
